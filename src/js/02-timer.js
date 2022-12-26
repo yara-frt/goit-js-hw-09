@@ -53,18 +53,17 @@ function closeDisabled(btn) {
 function onClickBtnTimer() {
     intervalId = setInterval(() => {
     const currentTime = Date.now();
-    
-    if ((futureDate - currentTime) <= 1000) {
-           endsTheInterval()
-        }
-    const deltaTime = futureDate - currentTime;
-                
+    const deltaTime = futureDate - currentTime;           
     const { days, hours, minutes, seconds } = convertMs(deltaTime);
 
     dataTimer.dataDays.textContent = addLeadingZero(days);
     dataTimer.dataHours.textContent = addLeadingZero(hours);
     dataTimer.dataMinutes.textContent = addLeadingZero(minutes);
-    dataTimer.dataSeconds.textContent = addLeadingZero(seconds);       
+    dataTimer.dataSeconds.textContent = addLeadingZero(seconds);
+    
+    if (deltaTime <= 1000) {
+        endsTheInterval()
+    }
     }, 1000)
 }
 
