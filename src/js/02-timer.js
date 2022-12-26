@@ -9,15 +9,14 @@ const dataTimer = {
     dataMinutes: document.querySelectorAll('.value')[2],
     dataSeconds: document.querySelectorAll('.value')[3],
 }
+const date = new Date();
+let intervalId = null;
+let futureDate = null;
 
 btn.addEventListener('click', onClickBtnTimer);
 
 onDisabled(btn);
 
-
-const date = new Date();
-let intervalId = null;
-let futureDate = null;
 
 const options = {
   enableTime: true,
@@ -56,7 +55,7 @@ function onClickBtnTimer() {
     const currentTime = Date.now();
     
     if ((futureDate - currentTime) <= 1000) {
-            clearInterval(intervalId);
+           endsTheInterval()
         }
     const deltaTime = futureDate - currentTime;
                 
@@ -67,6 +66,10 @@ function onClickBtnTimer() {
     dataTimer.dataMinutes.textContent = addLeadingZero(minutes);
     dataTimer.dataSeconds.textContent = addLeadingZero(seconds);       
     }, 1000)
+}
+
+function endsTheInterval() {
+     clearInterval(intervalId);
 }
 
 function addLeadingZero(value) {
