@@ -56,15 +56,19 @@ function onClickBtnTimer() {
     const deltaTime = futureDate - currentTime;           
     const { days, hours, minutes, seconds } = convertMs(deltaTime);
 
-    dataTimer.dataDays.textContent = addLeadingZero(days);
-    dataTimer.dataHours.textContent = addLeadingZero(hours);
-    dataTimer.dataMinutes.textContent = addLeadingZero(minutes);
-    dataTimer.dataSeconds.textContent = addLeadingZero(seconds);
+    showTimer({ days, hours, minutes, seconds })
     
     if (deltaTime <= 1000) {
         endsTheInterval()
     }
     }, 1000)
+}
+
+function showTimer({ days, hours, minutes, seconds }) {
+    dataTimer.dataDays.textContent = addLeadingZero(days);
+    dataTimer.dataHours.textContent = addLeadingZero(hours);
+    dataTimer.dataMinutes.textContent = addLeadingZero(minutes);
+    dataTimer.dataSeconds.textContent = addLeadingZero(seconds);
 }
 
 function endsTheInterval() {
