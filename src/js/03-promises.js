@@ -6,7 +6,6 @@ const refs = {
   button: document.querySelector('button'),
 }
 
-console.log(refs.button);
 
 refs.form.addEventListener('submit', onSubmit);
 
