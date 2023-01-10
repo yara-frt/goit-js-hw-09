@@ -26,9 +26,12 @@ const options = {
     onClose(selectedDates) {
         if (selectedDates[0] <= date) {
             showsMessageWrongDate()
-        } 
-        futureDate = selectedDates[0].getTime();
-        closeDisabled(btn)   
+            
+        } else {
+            futureDate = selectedDates[0].getTime();
+            closeDisabled(btn)   
+        }
+        
             
                 
 
@@ -51,6 +54,7 @@ function closeDisabled(btn) {
 }
 
 function onClickBtnTimer() {
+    onDisabled(btn);
     intervalId = setInterval(() => {
     const currentTime = Date.now();
     const deltaTime = futureDate - currentTime;           
